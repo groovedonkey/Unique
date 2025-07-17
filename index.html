@@ -15,7 +15,7 @@
         /* Custom CSS for base styles and animations */
         body {
             font-family: 'Inter', sans-serif;
-            background-image: url('https://raw.githubusercontent.com/groovedonkey/Unique/main/TD%20Body%20BG.png'); /* New Tie-dye background */
+            background-image: url('https://raw.githubusercontent.com/groovedonkey/Unique/main/TD%20Body%20BG.png'); /* Tie-dye background */
             background-size: cover;
             background-position: center;
             background-attachment: fixed; /* Keeps the background stationary on scroll */
@@ -23,51 +23,40 @@
 
         /* Keyframes for the header pan-in animation */
         @keyframes slideInFromLeft {
-            0% {
-                transform: translateX(-100%);
-                opacity: 0;
-            }
-            100% {
-                transform: translateX(0);
-                opacity: 1;
-            }
+            0% { transform: translateX(-100%); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
         }
 
-        /* Apply the animation to the header, now slower */
         .header-animated {
             animation: slideInFromLeft 1.5s ease-out forwards;
         }
 
-        /* Add scroll padding to offset the fixed header */
         html {
             scroll-padding-top: 220px; /* Adjust this value based on the final header height */
         }
         @media (min-width: 768px) {
-             html {
-                scroll-padding-top: 200px;
-            }
+             html { scroll-padding-top: 200px; }
         }
 
-        /* Style for the image gallery transition */
-        .gallery-image {
-            transition: opacity 0.7s ease-in-out;
-        }
+        .gallery-image { transition: opacity 0.7s ease-in-out; }
 
-        /* Text stroke for better readability on complex backgrounds */
         .text-shadow {
-             text-shadow:
-                -1px -1px 0 #000,  
-                 1px -1px 0 #000,
-                -1px  1px 0 #000,
-                 1px  1px 0 #000;
+             text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
         }
 
-        /* White stroke effect for the logo image */
         .logo-stroke {
-            filter: drop-shadow(1px 1px 0 white)
-                    drop-shadow(-1px -1px 0 white)
-                    drop-shadow(1px -1px 0 white)
-                    drop-shadow(-1px 1px 0 white);
+            filter: drop-shadow(1px 1px 0 white) drop-shadow(-1px -1px 0 white) drop-shadow(1px -1px 0 white) drop-shadow(-1px 1px 0 white);
+        }
+
+        /* Calendar-specific styles */
+        .time-slot { transition: background-color 0.3s ease, transform 0.2s ease; }
+        .time-slot.available:hover { transform: scale(1.05); cursor: pointer; }
+        
+        /* Modal and Notification styles */
+        .modal-backdrop { transition: opacity 0.3s ease-in-out; }
+        
+        #notification-banner {
+            transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
         }
     </style>
 </head>
@@ -90,23 +79,18 @@
         </div>
     </header>
 
-    <main class="pt-[240px] md:pt-[220px]"> <section id="about" class="min-h-screen py-16 px-4 sm:px-6 lg:px-8">
+    <main class="pt-[240px] md:pt-[220px]">
+        <section id="about" class="min-h-screen py-16 px-4 sm:px-6 lg:px-8">
             <div class="container mx-auto grid md:grid-cols-2 gap-12 items-center">
                 <div class="space-y-4 bg-gray-800/50 p-8 rounded-lg shadow-xl backdrop-blur-sm">
                     <h2 class="text-4xl font-bold text-white mb-4 border-b-2 border-red-500 pb-2">About Us</h2>
                     <p class="text-lg text-gray-300">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste ratione incidunt nostrum ipsum corrupti autem odit dolorem. Alias dolorum repellendus eveniet optio, ratione obcaecati quas maxime laborum ducimus doloribus fuga possimus quibusdam hic eaque odio?</p>
-                    <p class="text-lg text-gray-300">
                 </div>
                 
                 <div class="relative w-full max-w-2xl mx-auto h-96 shadow-2xl rounded-lg overflow-hidden">
                     <img id="galleryImage" src="https://placehold.co/800x600/3498db/ffffff?text=Vibrant+Service" alt="Gallery Image" class="gallery-image absolute top-0 left-0 w-full h-full object-cover">
-                    
-                    <button id="prevBtn" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-black/50 hover:bg-black/75 text-white p-3 rounded-full transition">
-                        &#10094;
-                    </button>
-                    <button id="nextBtn" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-black/50 hover:bg-black/75 text-white p-3 rounded-full transition">
-                        &#10095;
-                    </button>
+                    <button id="prevBtn" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-black/50 hover:bg-black/75 text-white p-3 rounded-full transition">&#10094;</button>
+                    <button id="nextBtn" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-black/50 hover:bg-black/75 text-white p-3 rounded-full transition">&#10095;</button>
                 </div>
             </div>
         </section>
@@ -145,111 +129,303 @@
         </section>
 
         <section id="schedule" class="min-h-screen py-16 px-4 sm:px-6 lg:px-8">
-            <div class="container mx-auto grid md:grid-cols-2 gap-12 items-center">
-                <div class="space-y-4 bg-gray-800/50 p-8 rounded-lg shadow-xl backdrop-blur-sm">
-                    <h2 class="text-4xl font-bold text-white mb-4 border-b-2 border-red-500 pb-2">Schedule Service</h2>
-                    <p class="text-lg text-gray-300">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam esse, quae, accusantium deleniti omnis sunt enim commodi molestiae dolore labore repudiandae quaerat aperiam, ab laudantium odio tempora eum. Totam cupiditate optio, quaerat eaque quos ullam.</p>
-                </div>
-                
-                <div class="bg-gray-800/50 p-8 rounded-lg shadow-xl backdrop-blur-sm">
-                    <form action="mailto:dro@groovedonkey.com" method="POST" enctype="text/plain" class="space-y-6">
-                        <div>
-                            <label for="schedule-name" class="block text-sm font-medium text-gray-300">Name</label>
-                            <input type="text" id="schedule-name" name="Name" required class="mt-1 block w-full bg-gray-700 border border-gray-600 rounded-md shadow-sm py-2 px-3 text-white focus:outline-none focus:ring-red-500 focus:border-red-500">
-                        </div>
-                        <div>
-                            <label for="schedule-email" class="block text-sm font-medium text-gray-300">Email</label>
-                            <input type="email" id="schedule-email" name="Email" required class="mt-1 block w-full bg-gray-700 border border-gray-600 rounded-md shadow-sm py-2 px-3 text-white focus:outline-none focus:ring-red-500 focus:border-red-500">
-                        </div>
-                        <div>
-                            <label for="schedule-phone" class="block text-sm font-medium text-gray-300">Phone (Optional)</label>
-                            <input type="tel" id="schedule-phone" name="Phone" class="mt-1 block w-full bg-gray-700 border border-gray-600 rounded-md shadow-sm py-2 px-3 text-white focus:outline-none focus:ring-red-500 focus:border-red-500">
-                        </div>
-                        <div>
-                            <label for="schedule-details" class="block text-sm font-medium text-gray-300">Details</label>
-                            <textarea id="schedule-details" name="ServiceDetails" rows="4" required class="mt-1 block w-full bg-gray-700 border border-gray-600 rounded-md shadow-sm py-2 px-3 text-white focus:outline-none focus:ring-red-500 focus:border-red-500"></textarea>
-                        </div>
-                        <div>
-                            <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition duration-300">Schedule Now</button>
-                        </div>
-                    </form>
+            <div class="container mx-auto">
+                <div class="bg-gray-800/60 p-6 md:p-8 rounded-lg shadow-xl backdrop-blur-sm">
+                    <div class="text-center mb-8">
+                        <h2 class="text-4xl font-bold text-white mb-4 border-b-2 border-red-500 pb-2 inline-block">Schedule Service</h2>
+                        <p class="text-lg text-gray-300 max-w-3xl mx-auto mt-4">Select an available time slot (green) to book your service. Booked slots are shown in red. All times are in your local timezone.</p>
+                    </div>
+
+                    <div class="flex justify-between items-center mb-4 text-white">
+                        <button id="prev-week" class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-md transition">&lt; Prev Week</button>
+                        <h3 id="current-week-title" class="text-xl md:text-2xl font-semibold"></h3>
+                        <button id="next-week" class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-md transition">Next Week &gt;</button>
+                    </div>
+
+                    <div id="calendar-container" class="overflow-x-auto">
+                        <div class="text-center py-16"><p class="text-2xl text-white">Initializing Scheduler...</p></div>
+                    </div>
                 </div>
             </div>
         </section>
-
     </main>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
+    <!-- Booking Modal -->
+    <div id="booking-modal" class="modal-backdrop fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 hidden opacity-0">
+        <div class="bg-gray-800 rounded-lg shadow-2xl p-8 w-full max-w-md m-4">
+            <h3 class="text-2xl font-bold text-white mb-4">Book Appointment</h3>
+            <p id="modal-time-info" class="text-gray-300 mb-6"></p>
+            <form id="booking-form">
+                <input type="hidden" id="booking-date" name="booking-date">
+                <input type="hidden" id="booking-hour" name="booking-hour">
+                <div>
+                    <label for="user-name" class="block text-sm font-medium text-gray-300">Your Name</label>
+                    <input type="text" id="user-name" name="user-name" required class="mt-1 block w-full bg-gray-700 border border-gray-600 rounded-md shadow-sm py-2 px-3 text-white focus:outline-none focus:ring-red-500 focus:border-red-500">
+                </div>
+                <div class="mt-4">
+                    <label for="user-email" class="block text-sm font-medium text-gray-300">Your Email</label>
+                    <input type="email" id="user-email" name="user-email" required class="mt-1 block w-full bg-gray-700 border border-gray-600 rounded-md shadow-sm py-2 px-3 text-white focus:outline-none focus:ring-red-500 focus:border-red-500">
+                </div>
+                <div class="mt-6 flex justify-end space-x-4">
+                    <button type="button" id="cancel-booking" class="px-4 py-2 bg-gray-600 hover:bg-gray-700 rounded-md text-white transition">Cancel</button>
+                    <button type="submit" class="px-4 py-2 bg-red-600 hover:bg-red-700 rounded-md text-white font-semibold transition">Confirm Booking</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Notification Banner -->
+    <div id="notification-banner" class="fixed bottom-0 right-0 m-8 p-4 rounded-lg shadow-lg text-white transform translate-y-24 opacity-0 z-50">
+        <p id="notification-message"></p>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getFirestore, collection, doc, onSnapshot, setDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        
+        // --- DOM Elements ---
+        const calendarContainer = document.getElementById('calendar-container');
+        const prevWeekBtn = document.getElementById('prev-week');
+        const nextWeekBtn = document.getElementById('next-week');
+        const currentWeekTitle = document.getElementById('current-week-title');
+        const modal = document.getElementById('booking-modal');
+        const bookingForm = document.getElementById('booking-form');
+        const cancelBtn = document.getElementById('cancel-booking');
+        const notificationBanner = document.getElementById('notification-banner');
+        const notificationMessage = document.getElementById('notification-message');
+
+        // --- App State ---
+        let db, auth;
+        let currentWeekOffset = 0;
+        let bookings = {};
+        let unsubscribe = () => {};
+
+        /**
+         * Shows a notification banner.
+         * @param {string} message - The message to display.
+         * @param {boolean} [isError=false] - If true, displays an error style.
+         */
+        function showNotification(message, isError = false) {
+            notificationMessage.textContent = message;
+            notificationBanner.className = `fixed bottom-0 right-0 m-8 p-4 rounded-lg shadow-lg text-white transform translate-y-24 opacity-0 z-50 ${isError ? 'bg-red-600' : 'bg-green-600'}`;
             
-            // --- Smooth Scrolling for Nav Links ---
-            const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        targetElement.scrollIntoView({
-                            behavior: 'smooth'
-                        });
+            // Show banner
+            requestAnimationFrame(() => {
+                notificationBanner.classList.remove('translate-y-24', 'opacity-0');
+            });
+
+            // Hide after 5 seconds
+            setTimeout(() => {
+                notificationBanner.classList.add('translate-y-24', 'opacity-0');
+            }, 5000);
+        }
+
+        try {
+            // --- Firebase Configuration ---
+            const firebaseConfigStr = typeof __firebase_config !== 'undefined' ? __firebase_config : '{}';
+            if (firebaseConfigStr === '{}') {
+                throw new Error("Firebase configuration is missing.");
+            }
+            const firebaseConfig = JSON.parse(firebaseConfigStr);
+            const appId = typeof __app_id !== 'undefined' ? __app_id : 'unique-services-scheduler';
+
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            db = getFirestore(app);
+            auth = getAuth(app);
+
+            // --- Authentication ---
+            onAuthStateChanged(auth, async (user) => {
+                if (user) {
+                    console.log("User is signed in:", user.uid);
+                    renderCurrentWeek(); // User is ready, render the calendar
+                } else {
+                    try {
+                        // Use custom token if available, otherwise sign in anonymously
+                        if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                            console.log("Attempting to sign in with custom token.");
+                            await signInWithCustomToken(auth, __initial_auth_token);
+                        } else {
+                            console.log("Attempting to sign in anonymously.");
+                            await signInAnonymously(auth);
+                        }
+                    } catch (error) {
+                        console.error("Authentication failed:", error);
+                        calendarContainer.innerHTML = `<p class="text-red-400 text-center">Error: Could not connect to the scheduling service. Please refresh the page.</p>`;
                     }
+                }
+            });
+
+        } catch (error) {
+            console.error("Firebase initialization failed:", error);
+            calendarContainer.innerHTML = `<p class="text-red-400 text-center">Error: The scheduler could not be loaded. Configuration is invalid.</p>`;
+        }
+
+        // --- Calendar Logic ---
+        function renderCurrentWeek() {
+            unsubscribe(); // Detach previous listener
+            
+            const today = new Date();
+            today.setDate(today.getDate() + (currentWeekOffset * 7));
+            const weekDates = getWeekDates(today);
+            
+            updateWeekTitle(weekDates[0], weekDates[6]);
+            
+            const appId = typeof __app_id !== 'undefined' ? __app_id : 'unique-services-scheduler';
+            const bookingsColPath = `/artifacts/${appId}/public/data/bookings`;
+            const bookingsCol = collection(db, bookingsColPath);
+            
+            unsubscribe = onSnapshot(bookingsCol, (snapshot) => {
+                bookings = {};
+                snapshot.forEach(doc => {
+                    bookings[doc.id] = doc.data();
                 });
+                generateCalendarHTML(weekDates, bookings);
+            }, (error) => {
+                console.error("Error fetching bookings:", error);
+                calendarContainer.innerHTML = `<p class="text-red-400 text-center">Error loading schedule. Please try again later.</p>`;
             });
+        }
+        
+        function generateCalendarHTML(weekDates, currentBookings) {
+            const hours = Array.from({length: 12}, (_, i) => i + 8); // 8 AM to 7 PM
+            
+            let headerHtml = weekDates.map(date => `
+                <div class="flex-1 min-w-[120px] text-center font-semibold p-2 border-b border-gray-600">
+                    <div>${date.toLocaleString('en-US', { weekday: 'short' })}</div>
+                    <div class="text-sm text-gray-400">${date.toLocaleString('en-US', { month: 'short', day: 'numeric' })}</div>
+                </div>`).join('');
 
-            // --- Image Gallery Logic ---
-            const images = [
-                'https://placehold.co/800x600/e74c3c/ffffff?text=Quality+Craftsmanship',
-                'https://placehold.co/800x600/2ecc71/ffffff?text=Happy+Customers',
-                'https://placehold.co/800x600/f1c40f/ffffff?text=Creative+Solutions',
-                'https://placehold.co/800x600/9b59b6/ffffff?text=Expert+Team'
-            ];
-            let currentImageIndex = 0;
-            const galleryImage = document.getElementById('galleryImage');
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
+            let bodyHtml = hours.map(hour => {
+                let rowHtml = weekDates.map(date => {
+                    const dateStr = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+                    const slotId = `${dateStr}-${String(hour).padStart(2, '0')}`;
+                    const isBooked = !!currentBookings[slotId];
+                    const slotClass = isBooked ? 'bg-red-800/80 text-gray-500 cursor-not-allowed' : 'bg-green-600/70 hover:bg-green-500/90 available';
 
-            function showImage(index) {
-                galleryImage.style.opacity = '0';
-                // Wait for the fade-out transition to complete before changing the source
-                setTimeout(() => {
-                    galleryImage.src = images[index];
-                    galleryImage.style.opacity = '1';
-                }, 700); // This should match the CSS transition duration
+                    return `<div class="flex-1 min-w-[120px] p-1"><div class="time-slot w-full h-12 rounded-md flex items-center justify-center text-sm ${slotClass}" ${!isBooked ? `data-date="${dateStr}" data-hour="${hour}"` : ''}>${isBooked ? 'Booked' : `${hour}:00`}</div></div>`;
+                }).join('');
+                return `<div class="flex">${rowHtml}</div>`;
+            }).join('');
+
+            calendarContainer.innerHTML = `<div class="flex border-b border-gray-600">${headerHtml}</div><div class="space-y-1 mt-1">${bodyHtml}</div>`;
+            document.querySelectorAll('.time-slot.available').forEach(slot => slot.addEventListener('click', handleSlotClick));
+        }
+        
+        function getWeekDates(dateInWeek) {
+            const dates = [];
+            const dayOfWeek = dateInWeek.getDay();
+            const startDate = new Date(dateInWeek);
+            startDate.setDate(dateInWeek.getDate() - dayOfWeek);
+            for (let i = 0; i < 7; i++) {
+                const nextDate = new Date(startDate);
+                nextDate.setDate(startDate.getDate() + i);
+                dates.push(nextDate);
             }
+            return dates;
+        }
 
-            function showNextImage() {
-                currentImageIndex = (currentImageIndex + 1) % images.length;
-                showImage(currentImageIndex);
+        function updateWeekTitle(start, end) {
+            const startStr = start.toLocaleString('en-US', { month: 'long', day: 'numeric' });
+            const endStr = end.toLocaleString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+            currentWeekTitle.textContent = `${startStr} - ${endStr}`;
+        }
+
+        // --- Modal and Booking Logic ---
+        function handleSlotClick(event) {
+            const { date, hour } = event.currentTarget.dataset;
+            const displayDate = new Date(date + 'T00:00:00').toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+            document.getElementById('modal-time-info').textContent = `You are booking for ${displayDate} at ${hour}:00.`;
+            document.getElementById('booking-date').value = date;
+            document.getElementById('booking-hour').value = hour;
+            openModal();
+        }
+
+        async function handleBookingSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('user-name').value;
+            const email = document.getElementById('user-email').value;
+            const date = document.getElementById('booking-date').value;
+            const hour = document.getElementById('booking-hour').value;
+            const slotId = `${date}-${String(hour).padStart(2, '0')}`;
+            const bookingData = { name, email, date, hour: parseInt(hour), createdAt: new Date() };
+            
+            try {
+                const appId = typeof __app_id !== 'undefined' ? __app_id : 'unique-services-scheduler';
+                const bookingsColPath = `/artifacts/${appId}/public/data/bookings`;
+                await setDoc(doc(db, bookingsColPath, slotId), bookingData);
+                closeModal();
+                showNotification('Booking successful! Thank you.');
+            } catch (error) {
+                console.error("Error saving booking: ", error);
+                showNotification('There was an error making your booking. Please try again.', true);
             }
+        }
 
-            function showPrevImage() {
-                currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
-                showImage(currentImageIndex);
-            }
+        function openModal() {
+            modal.classList.remove('hidden');
+            setTimeout(() => modal.classList.remove('opacity-0'), 10);
+        }
 
-            // Event Listeners for gallery controls
-            nextBtn.addEventListener('click', () => {
-                showNextImage();
-                // Reset interval when user manually changes image
-                clearInterval(galleryInterval);
-                galleryInterval = setInterval(showNextImage, 10000);
-            });
+        function closeModal() {
+            modal.classList.add('opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                bookingForm.reset();
+            }, 300);
+        }
+        
+        // --- Event Listeners ---
+        prevWeekBtn.addEventListener('click', () => { currentWeekOffset--; renderCurrentWeek(); });
+        nextWeekBtn.addEventListener('click', () => { currentWeekOffset++; renderCurrentWeek(); });
+        bookingForm.addEventListener('submit', handleBookingSubmit);
+        cancelBtn.addEventListener('click', closeModal);
+        
+        // --- Image Gallery Logic ---
+        const images = [
+            'https://placehold.co/800x600/e74c3c/ffffff?text=Quality+Craftsmanship',
+            'https://placehold.co/800x600/2ecc71/ffffff?text=Happy+Customers',
+            'https://placehold.co/800x600/f1c40f/ffffff?text=Creative+Solutions',
+            'https://placehold.co/800x600/9b59b6/ffffff?text=Expert+Team'
+        ];
+        let currentImageIndex = 0;
+        const galleryImage = document.getElementById('galleryImage');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
 
-            prevBtn.addEventListener('click', () => {
-                showPrevImage();
-                // Reset interval
-                clearInterval(galleryInterval);
-                galleryInterval = setInterval(showNextImage, 10000);
-            });
+        function showImage(index) {
+            if (!galleryImage) return;
+            galleryImage.style.opacity = '0';
+            setTimeout(() => { galleryImage.src = images[index]; galleryImage.style.opacity = '1'; }, 700);
+        }
 
-            // Automatic transition interval (10 seconds)
-            let galleryInterval = setInterval(showNextImage, 10000);
-
-            // Set initial image
-            galleryImage.src = images[0];
-
+        function showNextImage() {
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            showImage(currentImageIndex);
+        }
+        
+        if (nextBtn) nextBtn.addEventListener('click', showNextImage);
+        if (prevBtn) prevBtn.addEventListener('click', () => {
+            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+            showImage(currentImageIndex);
         });
+        
+        setInterval(showNextImage, 10000);
+        if (galleryImage) showImage(currentImageIndex);
+
+        // --- Smooth Scrolling ---
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetElement = document.querySelector(this.getAttribute('href'));
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
     </script>
 </body>
 </html>
