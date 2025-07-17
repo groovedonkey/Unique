@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unique Services of Glynn</title>
     
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
@@ -35,9 +33,9 @@
             }
         }
 
-        /* Apply the animation to the header */
+        /* Apply the animation to the header, now slower */
         .header-animated {
-            animation: slideInFromLeft 1s ease-out forwards;
+            animation: slideInFromLeft 1.5s ease-out forwards;
         }
 
         /* Add scroll padding to offset the fixed header */
@@ -75,23 +73,13 @@
 </head>
 <body class="text-white">
 
-    <!-- 
-      ================================================================
-      HEADER & NAVIGATION
-      - Floating transparent header.
-      - Animated to pan in from the left on page load.
-      - Contains the company logo, phone number, and navigation links.
-      ================================================================
-    -->
-    <header id="main-header" class="fixed top-0 left-0 w-full z-50 p-4 header-animated" style="background-color: transparent;">
+    <header id="main-header" class="fixed top-0 left-0 w-full z-50 p-4 header-animated backdrop-blur-md" style="background-color: rgba(17, 24, 39, 0.8);">
         <div class="container mx-auto flex flex-col items-center justify-center space-y-4">
-            <!-- Logo and Phone Number -->
             <div class="flex flex-col items-center">
                 <img src="https://raw.githubusercontent.com/groovedonkey/Unique/main/Unique%20Logo.png" alt="Unique Logo" class="w-full max-w-[300px] h-auto logo-stroke" onerror="this.onerror=null; this.src='https://placehold.co/300x100/ffffff/000000?text=Logo';">
                 <p class="text-white font-semibold text-lg mt-2 text-shadow">912-223-1055</p>
             </div>
             
-            <!-- Navigation -->
             <nav>
                 <ul class="flex space-x-4 md:space-x-8">
                     <li><a href="#about" class="nav-link text-white hover:text-gray-200 font-bold py-2 px-4 rounded-lg transition duration-300 text-shadow">About Us</a></li>
@@ -102,29 +90,17 @@
         </div>
     </header>
 
-    <main class="pt-[240px] md:pt-[220px]"> <!-- Padding top to avoid content being hidden by the fixed header -->
-
-        <!-- 
-          ================================================================
-          ABOUT US SECTION
-          - Two-column layout: Text on the left, image gallery on the right.
-          - Image gallery automatically transitions and has manual controls.
-          ================================================================
-        -->
-        <section id="about" class="min-h-screen py-16 px-4 sm:px-6 lg:px-8">
+    <main class="pt-[240px] md:pt-[220px]"> <section id="about" class="min-h-screen py-16 px-4 sm:px-6 lg:px-8">
             <div class="container mx-auto grid md:grid-cols-2 gap-12 items-center">
-                <!-- Fixed Text Box -->
                 <div class="space-y-4 bg-gray-800/50 p-8 rounded-lg shadow-xl backdrop-blur-sm">
                     <h2 class="text-4xl font-bold text-white mb-4 border-b-2 border-red-500 pb-2">About Us</h2>
                     <p class="text-lg text-gray-300">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste ratione incidunt nostrum ipsum corrupti autem odit dolorem. Alias dolorum repellendus eveniet optio, ratione obcaecati quas maxime laborum ducimus doloribus fuga possimus quibusdam hic eaque odio?</p>
                     <p class="text-lg text-gray-300">
                 </div>
                 
-                <!-- Image Gallery -->
                 <div class="relative w-full max-w-2xl mx-auto h-96 shadow-2xl rounded-lg overflow-hidden">
                     <img id="galleryImage" src="https://placehold.co/800x600/3498db/ffffff?text=Vibrant+Service" alt="Gallery Image" class="gallery-image absolute top-0 left-0 w-full h-full object-cover">
                     
-                    <!-- Gallery Controls -->
                     <button id="prevBtn" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-black/50 hover:bg-black/75 text-white p-3 rounded-full transition">
                         &#10094;
                     </button>
@@ -135,22 +111,13 @@
             </div>
         </section>
 
-        <!-- 
-          ================================================================
-          GET QUOTE SECTION
-          - Two-column layout: Text on the left, contact form on the right.
-          - Form submits to a mailto link.
-          ================================================================
-        -->
         <section id="quote" class="min-h-screen py-16 px-4 sm:px-6 lg:px-8">
             <div class="container mx-auto grid md:grid-cols-2 gap-12 items-center">
-                <!-- Fixed Text Box -->
                 <div class="space-y-4 bg-gray-800/50 p-8 rounded-lg shadow-xl backdrop-blur-sm">
                     <h2 class="text-4xl font-bold text-white mb-4 border-b-2 border-red-500 pb-2">Get a Free Quote</h2>
                     <p class="text-lg text-gray-300">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore alias deleniti aut! Quidem ad voluptatem doloribus maiores, nisi quis error eos, tenetur dolorum eligendi dignissimos a praesentium asperiores natus possimus tempora placeat, vel culpa provident!</p>
                 </div>
 
-                <!-- Get Quote Form -->
                 <div class="bg-gray-800/50 p-8 rounded-lg shadow-xl backdrop-blur-sm">
                     <form action="mailto:dro@groovedonkey.com" method="POST" enctype="text/plain" class="space-y-6">
                         <div>
@@ -177,22 +144,13 @@
             </div>
         </section>
 
-        <!-- 
-          ================================================================
-          SCHEDULE SERVICE SECTION
-          - Two-column layout: Text on the left, service form on the right.
-          - Form also submits to a mailto link.
-          ================================================================
-        -->
         <section id="schedule" class="min-h-screen py-16 px-4 sm:px-6 lg:px-8">
             <div class="container mx-auto grid md:grid-cols-2 gap-12 items-center">
-                <!-- Fixed Text Box -->
                 <div class="space-y-4 bg-gray-800/50 p-8 rounded-lg shadow-xl backdrop-blur-sm">
                     <h2 class="text-4xl font-bold text-white mb-4 border-b-2 border-red-500 pb-2">Schedule Service</h2>
                     <p class="text-lg text-gray-300">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam esse, quae, accusantium deleniti omnis sunt enim commodi molestiae dolore labore repudiandae quaerat aperiam, ab laudantium odio tempora eum. Totam cupiditate optio, quaerat eaque quos ullam.</p>
                 </div>
                 
-                <!-- Schedule Service Form -->
                 <div class="bg-gray-800/50 p-8 rounded-lg shadow-xl backdrop-blur-sm">
                     <form action="mailto:dro@groovedonkey.com" method="POST" enctype="text/plain" class="space-y-6">
                         <div>
