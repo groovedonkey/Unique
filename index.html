@@ -17,8 +17,10 @@
         /* Custom CSS for base styles and animations */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #1f2937; /* Fallback background */
-            background-image: linear-gradient(to right, #374151, #7f1d1d);
+            background-image: url('https://raw.githubusercontent.com/groovedonkey/Unique/main/TD%20Body%20BG.png'); /* New Tie-dye background */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Keeps the background stationary on scroll */
         }
 
         /* Keyframes for the header pan-in animation */
@@ -40,11 +42,11 @@
 
         /* Add scroll padding to offset the fixed header */
         html {
-            scroll-padding-top: 180px; /* Adjust this value based on the final header height */
+            scroll-padding-top: 220px; /* Adjust this value based on the final header height */
         }
         @media (min-width: 768px) {
              html {
-                scroll-padding-top: 150px;
+                scroll-padding-top: 200px;
             }
         }
 
@@ -53,9 +55,21 @@
             transition: opacity 0.7s ease-in-out;
         }
 
-        /* Text shadow for better readability on complex backgrounds */
+        /* Text stroke for better readability on complex backgrounds */
         .text-shadow {
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+             text-shadow:
+                -1px -1px 0 #000,  
+                 1px -1px 0 #000,
+                -1px  1px 0 #000,
+                 1px  1px 0 #000;
+        }
+
+        /* White stroke effect for the logo image */
+        .logo-stroke {
+            filter: drop-shadow(1px 1px 0 white)
+                    drop-shadow(-1px -1px 0 white)
+                    drop-shadow(1px -1px 0 white)
+                    drop-shadow(-1px 1px 0 white);
         }
     </style>
 </head>
@@ -64,18 +78,16 @@
     <!-- 
       ================================================================
       HEADER & NAVIGATION
-      - Floating header with a heavy tie-dye background.
+      - Floating transparent header.
       - Animated to pan in from the left on page load.
       - Contains the company logo, phone number, and navigation links.
       ================================================================
     -->
-    <header id="main-header" class="fixed top-0 left-0 w-full z-50 p-4 shadow-lg header-animated" style="background-image: url('https://github.com/groovedonkey/Unique/blob/main/TD%20Header%20BG.png'); background-size: cover; background-position: center;">
+    <header id="main-header" class="fixed top-0 left-0 w-full z-50 p-4 header-animated" style="background-color: transparent;">
         <div class="container mx-auto flex flex-col items-center justify-center space-y-4">
             <!-- Logo and Phone Number -->
             <div class="flex flex-col items-center">
-                <div class="bg-white rounded-full p-2 shadow-md">
-                    <img src="https://github.com/groovedonkey/Unique/blob/main/Unique%20Logo.png" alt="Unique Logo" class="h-24 w-24 object-contain" onerror="this.onerror=null; this.src='https://placehold.co/96x96/ffffff/000000?text=Logo';">
-                </div>
+                <img src="https://raw.githubusercontent.com/groovedonkey/Unique/main/Unique%20Logo.png" alt="Unique Logo" class="w-full max-w-[300px] h-auto logo-stroke" onerror="this.onerror=null; this.src='https://placehold.co/300x100/ffffff/000000?text=Logo';">
                 <p class="text-white font-semibold text-lg mt-2 text-shadow">912-223-1055</p>
             </div>
             
@@ -90,7 +102,7 @@
         </div>
     </header>
 
-    <main class="pt-[220px] md:pt-[200px]"> <!-- Padding top to avoid content being hidden by the fixed header -->
+    <main class="pt-[240px] md:pt-[220px]"> <!-- Padding top to avoid content being hidden by the fixed header -->
 
         <!-- 
           ================================================================
@@ -102,10 +114,10 @@
         <section id="about" class="min-h-screen py-16 px-4 sm:px-6 lg:px-8">
             <div class="container mx-auto grid md:grid-cols-2 gap-12 items-center">
                 <!-- Fixed Text Box -->
-                <div class="space-y-4 bg-gray-800/50 p-8 rounded-lg shadow-xl">
+                <div class="space-y-4 bg-gray-800/50 p-8 rounded-lg shadow-xl backdrop-blur-sm">
                     <h2 class="text-4xl font-bold text-white mb-4 border-b-2 border-red-500 pb-2">About Us</h2>
-                    <p class="text-lg text-gray-300">Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias quos consequatur laboriosam deserunt nostrum non at. Sint ducimus nam maxime sapiente asperiores veniam voluptas numquam possimus, dolor distinctio et vero corporis temporibus, molestias rem iste!</p>
-                   
+                    <p class="text-lg text-gray-300">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste ratione incidunt nostrum ipsum corrupti autem odit dolorem. Alias dolorum repellendus eveniet optio, ratione obcaecati quas maxime laborum ducimus doloribus fuga possimus quibusdam hic eaque odio?</p>
+                    <p class="text-lg text-gray-300">
                 </div>
                 
                 <!-- Image Gallery -->
@@ -130,16 +142,16 @@
           - Form submits to a mailto link.
           ================================================================
         -->
-        <section id="quote" class="min-h-screen py-16 px-4 sm:px-6 lg:px-8 bg-gray-900/20">
+        <section id="quote" class="min-h-screen py-16 px-4 sm:px-6 lg:px-8">
             <div class="container mx-auto grid md:grid-cols-2 gap-12 items-center">
                 <!-- Fixed Text Box -->
-                <div class="space-y-4 bg-gray-800/50 p-8 rounded-lg shadow-xl">
+                <div class="space-y-4 bg-gray-800/50 p-8 rounded-lg shadow-xl backdrop-blur-sm">
                     <h2 class="text-4xl font-bold text-white mb-4 border-b-2 border-red-500 pb-2">Get a Free Quote</h2>
-                    <p class="text-lg text-gray-300">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit natus cupiditate vel? Porro dolore qui voluptatum tempora saepe, ea reiciendis? Tempore at mollitia laborum exercitationem impedit magni consequuntur, qui quas doloremque aliquam accusamus. Est, recusandae?</p>
+                    <p class="text-lg text-gray-300">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore alias deleniti aut! Quidem ad voluptatem doloribus maiores, nisi quis error eos, tenetur dolorum eligendi dignissimos a praesentium asperiores natus possimus tempora placeat, vel culpa provident!</p>
                 </div>
 
                 <!-- Get Quote Form -->
-                <div class="bg-gray-800/50 p-8 rounded-lg shadow-xl">
+                <div class="bg-gray-800/50 p-8 rounded-lg shadow-xl backdrop-blur-sm">
                     <form action="mailto:dro@groovedonkey.com" method="POST" enctype="text/plain" class="space-y-6">
                         <div>
                             <label for="quote-name" class="block text-sm font-medium text-gray-300">Name</label>
@@ -175,13 +187,13 @@
         <section id="schedule" class="min-h-screen py-16 px-4 sm:px-6 lg:px-8">
             <div class="container mx-auto grid md:grid-cols-2 gap-12 items-center">
                 <!-- Fixed Text Box -->
-                <div class="space-y-4 bg-gray-800/50 p-8 rounded-lg shadow-xl">
+                <div class="space-y-4 bg-gray-800/50 p-8 rounded-lg shadow-xl backdrop-blur-sm">
                     <h2 class="text-4xl font-bold text-white mb-4 border-b-2 border-red-500 pb-2">Schedule Service</h2>
-                    <p class="text-lg text-gray-300">loremx35</p>
+                    <p class="text-lg text-gray-300">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam esse, quae, accusantium deleniti omnis sunt enim commodi molestiae dolore labore repudiandae quaerat aperiam, ab laudantium odio tempora eum. Totam cupiditate optio, quaerat eaque quos ullam.</p>
                 </div>
                 
                 <!-- Schedule Service Form -->
-                <div class="bg-gray-800/50 p-8 rounded-lg shadow-xl">
+                <div class="bg-gray-800/50 p-8 rounded-lg shadow-xl backdrop-blur-sm">
                     <form action="mailto:dro@groovedonkey.com" method="POST" enctype="text/plain" class="space-y-6">
                         <div>
                             <label for="schedule-name" class="block text-sm font-medium text-gray-300">Name</label>
